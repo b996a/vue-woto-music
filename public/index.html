@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <link rel="icon" href="<%= BASE_URL %>music.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.isProd ? '' : 'dev - ' %>Music Player
+  </title>
+  <% if(htmlWebpackPlugin.options.isProd){ %>
+    <!-- 引入样式文件 -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css" /> -->
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script> -->
+    <script src="https://cdn.staticfile.org/vue/2.5.22/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/3.0.1/vue-router.min.js"></script>
+    <script src="https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <!-- <script>
+      // 在 #app 标签下渲染一个按钮组件
+      new Vue({
+        el: '#app',
+        template: `<van-button>按钮</van-button>`,
+      });
+      // 调用函数组件，弹出一个 Toast
+      vant.Toast('提示');
+      // 通过 CDN 引入时不会自动注册 Lazyload 组件
+      // 可以通过下面的方式手动注册
+      Vue.use(vant.Lazyload);
+      Vue.use(vant.Dialog)
+      Vue.use(vant.Circle)
+      Vue.use(vant.Loading)
+      Vue.use(vant.Popup)
+      Vue.use(vant.Empty)
+      Vue.use(vant.DropdownMenu)
+      Vue.use(vant.DropdownItem)
+      Vue.use(vant.Grid)
+      Vue.use(vant.GridItem)
+      Vue.use(vant.Swipe)
+      Vue.use(vant.SwipeItem)
+      Vue.use(vant.PullRefresh)
+      Vue.use(vant.List)
+      Vue.use(vant.Divider)
+      Vue.use(vant.Tab)
+      Vue.use(vant.Tabs)
+      Vue.use(vant.Toast)
+      Vue.use(vant.Tag)
+      Vue.use(vant.Search)
+      Vue.use(vant.Cell)
+      Vue.use(vant.CellGroup)
+      Vue.use(vant.VanImage)
+      Vue.use(vant.NavBar)
+      Vue.use(vant.Button)
+      Vue.use(vant.Tabbar)
+      Vue.use(vant.TabbarItem)
+      Vue.use(vant.Col)
+      Vue.use(vant.Row)
+      Vue.use(vant.Icon)
+    </script> -->
+    <% } %>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
