@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       progress: 0,
-      keepAliveArr: ['LayoutPage', 'userInfo', 'boutiqueList', 'dailyRec', 'H-banner', 'HotRankList', 'NewSongs'],
+      keepAliveArr: ['LayoutPage', 'userInfo', 'boutiqueList', 'dailyRec', 'H-banner', 'HotRankList', 'NewSongs', 'HomePage'],
       // 刷新控制
       refreshControl: true
     }

@@ -19,7 +19,7 @@ export default {
       // 热门排行榜
       rinkList: [],
       // 歌单id
-      id: 3778678,
+      id: '3778678',
       // 获得的歌曲数
       limit: 20,
       // 起始歌曲
