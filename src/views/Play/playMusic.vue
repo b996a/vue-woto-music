@@ -26,7 +26,7 @@
               <div class="playing-lyric">{{ curLyric }}</div>
             </div> -->
             <!-- // lyricIndex为当前歌曲播放的进度在歌词中的位置，进而改变正在播放的歌词的样式 -->
-            <ul class="lyric" @click.stop="openlyric" ref="lyricRef" :style='{height:`${ulHeight}px`,paddingTop:`${ptHeight}px`}' v-show="!showLyricPage">
+            <ul class="lyric" @touchstart.prevent='onTouchStart' @touchmove.prevent='onTouchMove' @touchend.prevent='onTouchEnd' ref="lyricRef" :style='{height:`${ulHeight}px`,paddingTop:`${ptHeight}px`}' v-show="!showLyricPage">
               <li class="lyric-li" :style="{transform: `translateY(-${scroll}px)`}">
                 <p ref="pRef" :class="{each:true, choose: (index===lyricIndex)}" v-for="(item, key, index) in lyric" :key="key">{{item}}</p>
               </li>
@@ -122,7 +122,14 @@ export default {
       ptHeight: 0,
       ulHeight: 0,
       pHeight: 0,
-      flag: true
+      flag: true,
+      flag: true,
+      state: {
+        startY: 0,
+        startScrool: 0
+      },
+      isScroll: true,
+      time: null
     }
   },
   watch: {
@@ -302,6 +309,41 @@ export default {
     // 控制歌词的显示
     openlyric() {
       this.showLyricPage = !this.showLyricPage
+    },
+    onTouchStart(e) {
+      this.isScroll = false
+      this.state.startY = e.touches[0].clientY
+      this.state.startScrool = this.scroll
+    },
+    onTouchMove(e) {
+      const startY = this.state.startY
+      const startScrool = this.state.startScrool
+      const moveY = e.touches[0].clientY
+      this.liHeight = Object.keys(this.lyric).length * this.pHeight
+      if (this.scroll >= this.liHeight) {
+        this.scroll = this.liHeight - 100
+      } else if (this.scroll < 0) {
+        this.scroll = 0
+      } else {
+        this.scroll = startScrool + startY - moveY
+      }
+    },
+    onTouchEnd(e) {
+      const startScrool = this.state.startScrool
+      clearTimeout(this.time)
+      this.time = setTimeout(() => {
+        this.isScroll = true
+      }, 4000)
+      if (Math.abs(this.scroll - startScrool) <= 1) {
+        clearTimeout(this.time)
+        this.isScroll = true
+        this.openlyric()
+      }
+      if (this.scroll >= this.liHeight) {
+        this.scroll = this.liHeight - 100
+      } else if (this.scroll < 0) {
+        this.scroll = 0
+      }
     },
     // 关闭音乐详情界面
     closeSongDetail() {

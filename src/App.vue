@@ -57,7 +57,6 @@ export default {
       // const childName = this.$refs.child.$options.name
       const childNames = ['userInfo', 'LayoutPage']
       childNames.forEach(item => {
-        this.pageTabList[this.pageTabIndex].name = item
         if (!this.keepAliveArr.includes(item)) {
           this.keepAliveArr.push(item)
         }
